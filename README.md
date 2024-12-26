@@ -6,8 +6,8 @@ awards
 
 <!-- START_STATUS_TABLE -->
 
-| Service                     | Current Status |
-| --------------------------- | -------------- |
-| `snippets-playwright-tests` | ✅ Operational |
+| Service               | Current Status |
+| --------------------- | -------------- |
+| `snippets-playwright-tests` | ❌ Registry API Health Ping Failed |
 
 <!-- END_STATUS_TABLE -->
