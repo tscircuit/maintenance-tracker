@@ -789,3 +789,4 @@
 {"timestamp":"2025-01-02T05:44:01.148Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"HTTPError: Request failed with status code 401 Unauthorized: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
 {"timestamp":"2025-01-02T05:52:32.400Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"HTTPError: Request failed with status code 401 Unauthorized: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
 {"timestamp":"2025-01-02T06:05:04.692Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"HTTPError: Request failed with status code 401 Unauthorized: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
+{"timestamp":"2025-01-02T06:10:59.879Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
