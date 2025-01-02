@@ -9,10 +9,6 @@ export const checkSnippetsPlaywrightTestHealth: HealthCheckFunction =
       const checksRes = await ky
         .get(`https://api.github.com/repos/${repo}/commits/main/check-runs`, {
           timeout: 5000,
-          headers: {
-            Accept: "application/vnd.github.v3+json",
-            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-          },
         })
         .json<{ check_runs: Array<{ status: string; conclusion: string }> }>()
 
