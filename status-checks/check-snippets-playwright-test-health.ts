@@ -37,7 +37,7 @@ export const checkSnippetsPlaywrightTestHealth: HealthCheckFunction =
       return {
         ok: false,
         error: {
-          message: "Registry API Health Ping Failed",
+          message: err.toString(),
         },
       }
     }
