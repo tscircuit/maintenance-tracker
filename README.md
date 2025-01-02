@@ -8,6 +8,6 @@ awards
 
 | Service               | Current Status |
 | --------------------- | -------------- |
-| `snippets-playwright-tests` | ❌ Registry API Health Ping Failed |
+| `snippets-playwright-tests` | ❌ HTTPError: Request failed with status code 401 Unauthorized: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs |
 
 <!-- END_STATUS_TABLE -->
