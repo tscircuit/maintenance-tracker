@@ -1,4 +1,3 @@
-
 import type { HealthCheckFunction } from "./types"
 import ky from "ky"
 
@@ -7,16 +6,27 @@ const repo = "tscircuit/snippets"
 export const checkSnippetsPlaywrightTestHealth: HealthCheckFunction =
   async () => {
     try {
-      const checksRes = await ky
-        .get(`https://api.github.com/repos/${repo}/commits/main/check-runs`, {
-          timeout: 5000,
-        })
-        .json<{ check_runs: Array<{ status: string; conclusion: string }> }>()
+      console.log("Fetching CI check-runs from GitHub...");
+      const response = await ky.get(`https://api.github.com/repos/${repo}/commits/main/check-runs`, {
+        timeout: 5000,
+        headers: {
+          Accept: "application/vnd.github.v3+json",
+        },
+      })
 
-        checksRes.check_runs.forEach((check) => {
-          console.log(`Status: ${check.status}, Conclusion: ${check.conclusion}`);
-          
-        })
+      console.log("GitHub API response headers:", response.headers);
+      const checksRes = await response.json<{ check_runs: Array<{ status: string; conclusion: string }> }>();
+
+      console.log("GitHub API response payload:", JSON.stringify(checksRes, null, 2));
+
+      if (!checksRes || !checksRes.check_runs) {
+        throw new Error("Invalid response: check_runs array is missing");
+      }
+
+      checksRes.check_runs.forEach((check) => {
+        console.log(`Status: ${check.status}, Conclusion: ${check.conclusion}`);
+      })
+
       const allChecksComplete = checksRes.check_runs.every(
         (check) => check.status === "completed",
       )
@@ -34,7 +44,8 @@ export const checkSnippetsPlaywrightTestHealth: HealthCheckFunction =
       }
 
       return { ok: true }
-    } catch (err) {
+    } catch (err: any) {
+      console.error("Error during health check:", err.message || err)
       return {
         ok: false,
         error: {
