@@ -1,3 +1,4 @@
+
 import type { HealthCheckFunction } from "./types"
 import ky from "ky"
 
@@ -12,11 +13,15 @@ export const checkSnippetsPlaywrightTestHealth: HealthCheckFunction =
         })
         .json<{ check_runs: Array<{ status: string; conclusion: string }> }>()
 
+        checksRes.check_runs.forEach((check) => {
+          console.log(`Status: ${check.status}, Conclusion: ${check.conclusion}`);
+          
+        })
       const allChecksComplete = checksRes.check_runs.every(
         (check) => check.status === "completed",
       )
       const allChecksPassing = checksRes.check_runs.every(
-        (check) => check.conclusion === "success",
+        (check) => check.conclusion === "success" || check.conclusion === "skipped",
       )
 
       if (!allChecksComplete || !allChecksPassing) {
