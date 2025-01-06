@@ -64,6 +64,6 @@ export const getOutages = (checks: StatusCheck[]) => {
       })
     }
   }
-
+  console.log(`Detected Outages:` , outages)
   return outages
 }

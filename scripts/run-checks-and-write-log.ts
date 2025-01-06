@@ -20,7 +20,10 @@ async function runChecksAndWriteLog() {
 
   const results = await Promise.all(
     checks.map(async (check) => {
+      console.log(`Running health checks for ${check.name}`);
+      
       const result = await check.fn()
+      console.log(`Result for ${check.name}: ${result}`);
       if (!result.ok) {
         console.error(
           `${check.name} health check failed: ${result.error.message}`,
