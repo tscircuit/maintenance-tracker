@@ -10,13 +10,40 @@ export const checkSnippetsPlaywrightTestHealth: HealthCheckFunction =
         .get(`https://api.github.com/repos/${repo}/commits/main/check-runs`, {
           timeout: 5000,
         })
-        .json<{ check_runs: Array<{ status: string; conclusion: string }> }>()
+        .json<{
+          check_runs: Array<{
+            status: string
+            conclusion: string
+            name: string
+            completed_at: string
+            check_suite: { id: number }
+          }>
+        }>()
+
+      // Log the full check runs payload for investigation
+      console.log("Fetched check runs payload:", JSON.stringify(checksRes, null, 2))
+
+      // Log details for each check run
+      type CheckRun = {
+        status: string
+        conclusion: string
+        name: string
+        completed_at: string
+        check_suite: { id: number }
+      }
+
+      checksRes.check_runs.forEach((run: CheckRun, idx: number) => {
+        console.log(
+          `Check #${idx}: name=${run.name}, status=${run.status}, conclusion=${run.conclusion}, ` +
+          `suiteID=${run.check_suite.id}, completedAt=${run.completed_at}`
+        )
+      })
 
       const allChecksComplete = checksRes.check_runs.every(
-        (check) => check.status === "completed",
+        (check: CheckRun) => check.status === "completed",
       )
       const allChecksPassing = checksRes.check_runs.every(
-        (check) => check.conclusion === "success",
+        (check: CheckRun) => check.conclusion === "success",
       )
 
       if (!allChecksComplete || !allChecksPassing) {
