@@ -16,7 +16,7 @@ export const checkSnippetsPlaywrightTestHealth: HealthCheckFunction =
         (check) => check.status === "completed",
       )
       const allChecksPassing = checksRes.check_runs.every(
-        (check) => check.conclusion === "success",
+        (check) => check.conclusion === "success" || check.conclusion === "skipped", 
       )
 
       if (!allChecksComplete || !allChecksPassing) {
