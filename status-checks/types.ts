@@ -4,6 +4,7 @@ export type HealthCheckFunction = () => Promise<
       ok: false
       error: {
         message: string
+        isRateLimit?: boolean
       }
     }
 >

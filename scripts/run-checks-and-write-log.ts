@@ -5,7 +5,7 @@ interface StatusCheck {
   timestamp: string
   checks: {
     service: string
-    status: "ok" | "error"
+    status: "ok" | "error" | "rate-limit"
     error?: string
   }[]
 }
@@ -26,10 +26,22 @@ async function runChecksAndWriteLog() {
           `${check.name} health check failed: ${result.error.message}`,
         )
       }
+
+      let statusValue: "ok" | "error" | "rate-limit" = "ok"
+      let errorStr: string | undefined = undefined
+
+      if (!result.ok && result.error?.isRateLimit) {
+        statusValue = "rate-limit"  // won't count as a real outage
+        errorStr = result.error.message
+      } else if (!result.ok) {
+        statusValue = "error"
+        errorStr = result.error.message
+      }
+
       return {
         service: check.name,
-        status: result.ok ? "ok" : "error",
-        ...(result.ok ? {} : { error: result.error.message }),
+        status: statusValue,
+        ...(errorStr ? { error: errorStr } : {}),
       }
     }),
   )

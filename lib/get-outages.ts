@@ -28,7 +28,8 @@ export const getOutages = (checks: StatusCheck[]) => {
 
     for (const check of checks) {
       const timestamp = new Date(check.timestamp)
-      const hasError = check.checks[0].status === "error"
+      // Only treat "error" status as an outage, not rate limits
+      const hasError = check.checks[0].status === "error" // rate-limit status is treated like "ok"
 
       if (hasError && !currentOutage) {
         // Start new outage

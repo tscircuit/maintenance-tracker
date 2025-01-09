@@ -56,12 +56,22 @@ export const checkSnippetsPlaywrightTestHealth: HealthCheckFunction =
       }
 
       return { ok: true }
-    } catch (err) {
+    } catch (err: unknown) {
+      const errorMessage = String(err);
+      if (errorMessage.includes("403") && errorMessage.toLowerCase().includes("rate limit")) {
+        return {
+          ok: false,
+          error: {
+            message: errorMessage,
+            isRateLimit: true
+          },
+        };
+      }
       return {
         ok: false,
         error: {
-          message: err.toString(),
+          message: errorMessage,
         },
-      }
+      };
     }
   }
