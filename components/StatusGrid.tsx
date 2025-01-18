@@ -1,14 +1,5 @@
 import type { StatusCheck } from "lib/types"
-
-function calculateUptime(checks: StatusCheck[], service: string): number {
-  const serviceChecks = checks.flatMap((check) =>
-    check.checks.filter((c) => c.service === service),
-  )
-  const successfulChecks = serviceChecks.filter(
-    (check) => check.status === "ok",
-  )
-  return (successfulChecks.length / serviceChecks.length) * 100
-}
+import { calculateUptime } from "../lib/calculate-uptime"
 
 export function StatusGrid({ checks }: { checks: StatusCheck[] }) {
   const latestCheck = checks[checks.length - 1]

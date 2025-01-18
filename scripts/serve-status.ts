@@ -1,58 +1,78 @@
-import { readFileSync } from "node:fs";
-import type { StatusCheck } from "../lib/types";
-import type { Serve } from "bun";
+import { readFileSync } from "node:fs"
+import type { StatusCheck } from "../lib/types"
+import type { Serve } from "bun"
+import { calculateUptime } from "../lib/calculate-uptime"
 
 // Match the 2-week retention policy from run-checks-and-write-log.ts
-const TWO_WEEKS_MS = 14 * 24 * 60 * 60 * 1000;
+const TWO_WEEKS_MS = 14 * 24 * 60 * 60 * 1000
 
-function getRecentLogs(): StatusCheck[] {
+async function getRecentLogs(): Promise<StatusCheck[]> {
   try {
-    const rawContent = readFileSync("./statuses.jsonl", "utf-8").trim();
-    if (!rawContent) return [];
-    
-    const lines = rawContent.split("\n");
-    const now = Date.now();
+    const content = await Bun.file("./statuses.jsonl").text()
+    const checks: StatusCheck[] = content
+      .trim()
+      .split("\n")
+      .map((line) => JSON.parse(line))
 
-    // Parse lines and filter to last 2 weeks
-    const allLogs: StatusCheck[] = lines
-      .filter((line: string) => line.trim() !== "")  // Skip empty lines
-      .map((line: string) => JSON.parse(line))
-      .filter((entry: StatusCheck) => {
-        const entryTime = new Date(entry.timestamp).getTime();
-        return now - entryTime <= TWO_WEEKS_MS;
-      });
-
-    return allLogs;
+    // Filter to last 2 weeks
+    const now = Date.now()
+    return checks.filter((entry) => {
+      const entryTime = new Date(entry.timestamp).getTime()
+      return now - entryTime <= TWO_WEEKS_MS
+    })
   } catch (error) {
-    console.error("Error reading status logs:", error);
-    return [];
+    console.error("Error reading status logs:", error)
+    return []
   }
 }
 
 Bun.serve({
   port: 3000,
-  fetch(req: Request) {
+  async fetch(req: Request) {
     try {
-      const url = new URL(req.url);
-      
+      const url = new URL(req.url)
+
       // Only handle /status.json endpoint
       if (url.pathname === "/status.json") {
-        const recentLogs = getRecentLogs();
-        return new Response(JSON.stringify(recentLogs, null, 2), {
-          headers: { 
+        const recentLogs = await getRecentLogs()
+
+        // Get unique services from the most recent check
+        const latestCheck = recentLogs[recentLogs.length - 1]
+        if (!latestCheck) {
+          return new Response(JSON.stringify({}), {
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          })
+        }
+
+        // Get sorted list of services for consistent ordering
+        const services = [
+          ...new Set(latestCheck.checks.map((check) => check.service)),
+        ].sort()
+
+        // Calculate uptime percentages for each service
+        const uptimePercentages: { [key: string]: number } = {}
+        for (const service of services) {
+          uptimePercentages[service] = calculateUptime(recentLogs, service)
+        }
+
+        return new Response(JSON.stringify(uptimePercentages, null, 2), {
+          headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*" // Allow cross-origin requests
-          }
-        });
+            "Access-Control-Allow-Origin": "*", // Allow cross-origin requests
+          },
+        })
       }
 
       // 404 for all other routes
-      return new Response("Not Found", { status: 404 });
+      return new Response("Not Found", { status: 404 })
     } catch (error) {
-      console.error("Server error:", error);
-      return new Response("Internal Server Error", { status: 500 });
+      console.error("Server error:", error)
+      return new Response("Internal Server Error", { status: 500 })
     }
-  }
-});
+  },
+})
 
-console.log("Status server running on http://localhost:3000/status.json");
+console.log("Status server running on http://localhost:3000/status.json")

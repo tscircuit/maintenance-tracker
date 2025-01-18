@@ -5,14 +5,22 @@ import type { StatusCheck } from "lib/types"
 import { StatusGrid } from "components/StatusGrid"
 import { UptimeGraph } from "components/UptimeGraph"
 import { OutageTable } from "components/OutageTable"
+import { calculateUptime } from "../lib/calculate-uptime"
 
 async function generateSite() {
   console.log("reading statuses...")
   const content = await Bun.file("./statuses.jsonl").text()
+  const TWO_WEEKS_MS = 14 * 24 * 60 * 60 * 1000
+  const now = Date.now()
+  
   const checks: StatusCheck[] = content
     .trim()
     .split("\n")
     .map((line) => JSON.parse(line))
+    .filter((entry) => {
+      const entryTime = new Date(entry.timestamp).getTime()
+      return now - entryTime <= TWO_WEEKS_MS
+    })
   console.log("found", checks.length, "checks")
 
   console.log("computing service outages...")
@@ -42,6 +50,19 @@ async function generateSite() {
 
   console.log("writing to ./public/index.html...")
   await Bun.write("./public/index.html", `<!DOCTYPE html>${html}`)
+
+  // Calculate uptime percentages for status.json
+  console.log("generating status.json...")
+  const latestCheck = checks[checks.length - 1]
+  const services = latestCheck.checks.map((check) => check.service)
+  const uptimePercentages: { [key: string]: number } = {}
+
+  for (const service of services) {
+    uptimePercentages[service] = calculateUptime(checks, service)
+  }
+
+  console.log("writing to ./public/status.json...")
+  await Bun.write("./public/status.json", JSON.stringify(uptimePercentages, null, 2))
 }
 
 generateSite().catch(console.error)
