@@ -6,9 +6,12 @@ import { StatusGrid } from "components/StatusGrid"
 import { UptimeGraph } from "components/UptimeGraph"
 import { OutageTable } from "components/OutageTable"
 import { calculateUptime } from "../lib/calculate-uptime"
+import debug from "debug"
+
+const log = debug("tscircuit:site-generator")
 
 async function generateSite() {
-  console.log("reading statuses...")
+  log("reading statuses from file")
   const content = await Bun.file("./statuses.jsonl").text()
   const TWO_WEEKS_MS = 14 * 24 * 60 * 60 * 1000
   const now = Date.now()
@@ -21,13 +24,13 @@ async function generateSite() {
       const entryTime = new Date(entry.timestamp).getTime()
       return now - entryTime <= TWO_WEEKS_MS
     })
-  console.log("found", checks.length, "checks")
+  log("processed %d status checks", checks.length)
 
-  console.log("computing service outages...")
+  log("computing service outages")
   const outages = getOutages(checks)
-  console.log("found", outages.length, "outages")
+  log("found %d outages", outages.length)
 
-  console.log("rendering html...")
+  log("rendering html")
   const html = renderToString(
     <html lang="en">
       <head>
@@ -48,11 +51,10 @@ async function generateSite() {
     </html>,
   )
 
-  console.log("writing to ./public/index.html...")
+  log("writing index.html")
   await Bun.write("./public/index.html", `<!DOCTYPE html>${html}`)
 
-  // Calculate uptime percentages for status.json
-  console.log("generating status.json...")
+  log("calculating uptime percentages")
   const latestCheck = checks[checks.length - 1]
   const services = latestCheck.checks.map((check) => check.service)
   const uptimePercentages: { [key: string]: number } = {}
@@ -61,8 +63,12 @@ async function generateSite() {
     uptimePercentages[service] = calculateUptime(checks, service)
   }
 
-  console.log("writing to ./public/status.json...")
+  log("writing status.json")
   await Bun.write("./public/status.json", JSON.stringify(uptimePercentages, null, 2))
+  log("site generation complete")
 }
 
-generateSite().catch(console.error)
+generateSite().catch((error) => {
+  log("error generating site: %O", error)
+  throw error
+})
