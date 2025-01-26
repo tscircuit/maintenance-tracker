@@ -1652,3 +1652,4 @@
 {"timestamp":"2025-01-26T19:22:26.840Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2025-01-26T19:32:40.766Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2025-01-26T19:42:32.795Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
+{"timestamp":"2025-01-26T19:52:27.285Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
