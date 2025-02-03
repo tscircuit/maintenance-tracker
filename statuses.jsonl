@@ -1,5 +1,3 @@
-{"timestamp":"2025-01-20T16:16:55.574Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2025-01-20T16:30:01.242Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2025-01-20T16:39:54.561Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2025-01-20T16:47:18.745Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2025-01-20T16:54:38.861Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
@@ -1797,3 +1795,4 @@
 {"timestamp":"2025-02-03T15:52:23.389Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2025-02-03T16:04:18.195Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2025-02-03T16:16:49.272Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
+{"timestamp":"2025-02-03T16:30:41.857Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
