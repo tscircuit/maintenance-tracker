@@ -8,6 +8,6 @@ awards
 
 | Service               | Current Status |
 | --------------------- | -------------- |
-| `snippets-playwright-tests` | ✅ Operational |
+| `snippets-playwright-tests` | ❌ TimeoutError: Request timed out: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs |
 
 <!-- END_STATUS_TABLE -->
