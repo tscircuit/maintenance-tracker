@@ -8,6 +8,6 @@ awards
 
 | Service               | Current Status |
 | --------------------- | -------------- |
-| `snippets-playwright-tests` | ❌ HTTPError: Request failed with status code 403 rate limit exceeded: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs |
+| `snippets-playwright-tests` | ❌ Not all CI checks are passing |
 
 <!-- END_STATUS_TABLE -->
