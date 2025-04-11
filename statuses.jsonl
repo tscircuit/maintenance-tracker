@@ -1685,3 +1685,4 @@
 {"timestamp":"2025-04-11T08:32:56.937Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
 {"timestamp":"2025-04-11T08:45:53.998Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
 {"timestamp":"2025-04-11T08:53:54.541Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
+{"timestamp":"2025-04-11T09:04:18.343Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"HTTPError: Request failed with status code 403 rate limit exceeded: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
