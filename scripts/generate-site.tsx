@@ -15,7 +15,7 @@ async function generateSite() {
   const content = await Bun.file("./statuses.jsonl").text()
   const TWO_WEEKS_MS = 14 * 24 * 60 * 60 * 1000
   const now = Date.now()
-  
+
   const checks: StatusCheck[] = content
     .trim()
     .split("\n")
@@ -64,7 +64,10 @@ async function generateSite() {
   }
 
   log("writing status.json")
-  await Bun.write("./public/status.json", JSON.stringify(uptimePercentages, null, 2))
+  await Bun.write(
+    "./public/status.json",
+    JSON.stringify(uptimePercentages, null, 2),
+  )
   log("site generation complete")
 }
 

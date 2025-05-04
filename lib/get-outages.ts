@@ -23,7 +23,7 @@ export const getOutages = (checks: StatusCheck[]) => {
 
     checks.sort(
       (a, b) =>
-        new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+        new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime(),
     )
 
     for (const check of checks) {
