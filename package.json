@@ -4,7 +4,10 @@
   "type": "module",
   "scripts": {
     "start": "bun run scripts/run-checks-and-write-log.ts && bun run scripts/generate-site.tsx && open public/index.html",
-    "serve": "bun run scripts/serve-status.ts"
+    "serve": "bun run scripts/serve-status.ts",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

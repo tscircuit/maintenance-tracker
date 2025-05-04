@@ -18,7 +18,7 @@ async function runChecksAndWriteLog() {
     },
   ]
 
-  const results = await Promise.all(
+  const results: StatusCheck["checks"] = await Promise.all(
     checks.map(async (check) => {
       const result = await check.fn()
       if (!result.ok) {
@@ -28,7 +28,7 @@ async function runChecksAndWriteLog() {
       }
       return {
         service: check.name,
-        status: result.ok ? "ok" : "error",
+        status: result.ok ? "ok" : ("error" as const),
         ...(result.ok ? {} : { error: result.error.message }),
       }
     }),
