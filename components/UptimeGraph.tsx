@@ -28,13 +28,13 @@ export function UptimeGraph({ checks }: { checks: StatusCheck[] }) {
   console.log("rendering uptime graph...", hours.length)
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
+    <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 overflow-hidden">
       <h3 className="text-lg font-semibold mb-4">Uptime History</h3>
-      <div className="space-y-4">
+      <div className="space-y-4 sm:overflow-visible overflow-x-auto pb-2">
         {services.map((service) => (
           <div key={service} className="relative">
             <div className="text-sm font-medium mb-1">{service}</div>
-            <div className="grid grid-flow-col auto-cols-fr gap-px w-full">
+            <div className="grid grid-flow-col auto-cols-fr gap-px w-full sm:overflow-visible overflow-x-auto">
               {hours.map((hour) => {
                 const hourChecks = hourChecksMap.get(hour) || []
                 const serviceChecks = hourChecks.flatMap((check) =>
@@ -50,7 +50,7 @@ export function UptimeGraph({ checks }: { checks: StatusCheck[] }) {
                 return (
                   <div
                     key={hour}
-                    className={`h-8 w-full ${
+                    className={`h-6 sm:h-8 min-w-[12px] ${
                       allErrors
                         ? "bg-red-200"
                         : hasError
