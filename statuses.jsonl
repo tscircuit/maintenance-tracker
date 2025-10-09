@@ -1,4 +1,3 @@
-{"timestamp":"2025-09-25T22:27:23.799Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"HTTPError: Request failed with status code 403 rate limit exceeded: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
 {"timestamp":"2025-09-25T22:36:01.702Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
 {"timestamp":"2025-09-25T22:43:22.893Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
 {"timestamp":"2025-09-25T22:52:49.084Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
@@ -1694,3 +1693,4 @@
 {"timestamp":"2025-10-09T21:52:45.750Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2025-10-09T22:03:55.100Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2025-10-09T22:16:27.841Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
+{"timestamp":"2025-10-09T22:28:22.732Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
