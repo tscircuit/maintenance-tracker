@@ -1,5 +1,3 @@
-{"timestamp":"2025-12-09T13:25:33.428Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
-{"timestamp":"2025-12-09T13:43:03.533Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
 {"timestamp":"2025-12-09T13:55:49.966Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
 {"timestamp":"2025-12-09T14:06:07.957Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
 {"timestamp":"2025-12-09T14:18:10.589Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
@@ -1457,3 +1455,4 @@
 {"timestamp":"2025-12-23T12:46:17.595Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2025-12-23T13:07:01.799Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2025-12-23T13:25:28.384Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"TimeoutError: Request timed out: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
+{"timestamp":"2025-12-23T13:43:20.018Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
