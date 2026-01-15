@@ -1,5 +1,3 @@
-{"timestamp":"2026-01-01T14:45:20.981Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-01-01T14:53:24.934Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-01-01T15:05:06.316Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-01-01T15:17:09.592Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-01-01T15:31:07.933Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
@@ -1380,3 +1378,4 @@
 {"timestamp":"2026-01-15T14:12:13.809Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-01-15T14:30:21.922Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-01-15T14:44:53.121Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
+{"timestamp":"2026-01-15T14:56:01.584Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"HTTPError: Request failed with status code 403 rate limit exceeded: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
