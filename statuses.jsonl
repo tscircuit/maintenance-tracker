@@ -1,4 +1,3 @@
-{"timestamp":"2026-02-02T10:10:41.684Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-02-02T10:33:30.452Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-02-02T10:58:39.694Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-02-02T11:21:14.237Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
@@ -868,3 +867,4 @@
 {"timestamp":"2026-02-16T09:08:17.765Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-02-16T09:32:37.083Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-02-16T10:00:22.293Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
+{"timestamp":"2026-02-16T10:27:15.908Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
