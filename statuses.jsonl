@@ -1,16 +1,3 @@
-{"timestamp":"2026-07-23T15:16:36.300Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-07-23T15:59:53.997Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-07-23T16:37:22.134Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-07-23T17:06:34.803Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-07-23T17:42:44.552Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-07-23T18:15:33.062Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-07-23T18:45:45.802Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-07-23T19:16:33.999Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-07-23T19:51:00.605Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"HTTPError: Request failed with status code 403 rate limit exceeded: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
-{"timestamp":"2026-07-23T20:24:20.124Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-07-23T20:48:26.362Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-07-23T21:17:04.853Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
-{"timestamp":"2026-07-23T21:41:43.861Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-07-23T22:11:29.457Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-07-23T22:38:27.002Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-07-23T23:04:12.201Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
@@ -483,3 +470,4 @@
 {"timestamp":"2026-08-06T13:15:43.410Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-08-06T14:02:00.857Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-08-06T14:57:36.461Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
+{"timestamp":"2026-08-06T22:02:59.600Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
