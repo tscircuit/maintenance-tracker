@@ -850,3 +850,4 @@
 {"timestamp":"2026-08-18T11:32:27.748Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-08-18T11:47:30.385Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-08-18T11:58:48.084Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"TimeoutError: Request timed out: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
+{"timestamp":"2026-08-18T12:13:14.940Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"HTTPError: Request failed with status code 403 rate limit exceeded: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
