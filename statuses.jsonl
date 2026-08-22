@@ -1039,3 +1039,4 @@
 {"timestamp":"2026-08-22T17:19:49.337Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-08-22T17:32:49.013Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-08-22T17:46:01.939Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
+{"timestamp":"2026-08-22T17:55:52.997Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"Not all CI checks are passing"}]}
