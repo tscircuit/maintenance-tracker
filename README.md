@@ -8,6 +8,6 @@ awards
 
 | Service               | Current Status |
 | --------------------- | -------------- |
-| `snippets-playwright-tests` | ✅ Operational |
+| `snippets-playwright-tests` | ❌ Not all CI checks are passing |
 
 <!-- END_STATUS_TABLE -->
