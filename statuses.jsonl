@@ -1718,3 +1718,4 @@
 {"timestamp":"2026-11-07T01:35:00.943Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-11-07T01:42:27.379Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-11-07T01:52:34.704Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
+{"timestamp":"2026-11-07T02:07:56.397Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"TimeoutError: Request timed out: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
