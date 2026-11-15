@@ -1,4 +1,3 @@
-{"timestamp":"2026-11-01T20:52:42.922Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-11-01T21:05:22.846Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-11-01T21:12:59.190Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-11-01T21:22:35.508Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
@@ -1913,3 +1912,4 @@
 {"timestamp":"2026-11-15T20:33:04.663Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-11-15T20:42:37.275Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
 {"timestamp":"2026-11-15T20:52:38.672Z","checks":[{"service":"snippets-playwright-tests","status":"ok"}]}
+{"timestamp":"2026-11-15T21:04:58.359Z","checks":[{"service":"snippets-playwright-tests","status":"error","error":"HTTPError: Request failed with status code 403 rate limit exceeded: GET https://api.github.com/repos/tscircuit/snippets/commits/main/check-runs"}]}
